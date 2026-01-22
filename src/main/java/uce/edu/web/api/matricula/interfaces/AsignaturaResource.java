@@ -21,61 +21,61 @@ public class AsignaturaResource {
     private AsignaturaService asignaturaService;
 
     @GET
-    @Path("/todas")
+    @Path("")
     public List<Asignatura> listarTodas() {
         return this.asignaturaService.listarTodas();
     }
 
     @GET
-    @Path("/consultarPorId/{id}")
+    @Path("/{id}")
     public Asignatura consultarPorId(@PathParam("id") Integer id) {
         return this.asignaturaService.consultarPorId(id);
     }
 
     @GET
-    @Path("/consultarPorCodigo/{codigo}")
+    @Path("/codigo/{codigo}")
     public Asignatura consultarPorCodigo(@PathParam("codigo") String codigo) {
         return this.asignaturaService.consultarPorCodigo(codigo);
     }
 
     @GET
-    @Path("/consultarPorNombre")
+    @Path("/nombre")
     public List<Asignatura> consultarPorNombre(@QueryParam("nombre") String nombre) {
         return this.asignaturaService.consultarPorNombre(nombre);
     }
 
     @GET
-    @Path("/consultarPorNivel/{nivel}")
+    @Path("/nivel/{nivel}")
     public List<Asignatura> consultarPorNivel(@PathParam("nivel") Integer nivel) {
         return this.asignaturaService.consultarPorNivel(nivel);
     }
 
     @POST
-    @Path("/crear")
+    @Path("")
     public void guardar(Asignatura asignatura) {
         this.asignaturaService.crear(asignatura);
     }
 
     @PUT
-    @Path("/actualizar/{id}")
+    @Path("/{id}")
     public void actualizar(@PathParam("id") Integer id, Asignatura asignatura) {
         this.asignaturaService.actualizar(id, asignatura);
     }
 
     @PATCH
-    @Path("/actualizarParcial/{id}")
+    @Path("/{id}")
     public void actualizarParcial(@PathParam("id") Integer id, Asignatura asignatura) {
         this.asignaturaService.actualizarParcial(id, asignatura);
     }
 
     @DELETE
-    @Path("/eliminar/{id}")
+    @Path("/{id}")
     public void eliminar(@PathParam("id") Integer id) {
         this.asignaturaService.eliminar(id);
     }
 
     @DELETE
-    @Path("/eliminarPorCodigo/{codigo}")
+    @Path("/codigo/{codigo}")
     public Long eliminarPorCodigo(@PathParam("codigo") String codigo) {
         return this.asignaturaService.eliminarPorCodigo(codigo);
     }
