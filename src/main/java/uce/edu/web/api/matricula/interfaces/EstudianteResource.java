@@ -2,6 +2,7 @@ package uce.edu.web.api.matricula.interfaces;
 
 import java.util.List;
 
+import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -11,6 +12,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.matricula.application.EstudianteService;
 import uce.edu.web.api.matricula.domain.Estudiante;
@@ -23,6 +25,7 @@ public class EstudianteResource {
 
     @GET
     @Path("")
+    @jakarta.ws.rs.Produces(MediaType.APPLICATION_JSON)
     public List<Estudiante> listarTodos() {
         List<Estudiante> test = this.estudianteService.listarTodos();
         System.out.println("LISTAR TODOS XXXX");
@@ -31,6 +34,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/{id}")
+    @jakarta.ws.rs.Produces(MediaType.APPLICATION_XML)
     public Estudiante consultarPorId(@PathParam("id") Integer iden){
         return this.estudianteService.consultarPorId(iden);
     }
@@ -63,6 +67,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/provincia/genero")
+    @jakarta.ws.rs.Produces(MediaType.APPLICATION_XML)
     public List<Estudiante> buscarPorProvinciaGenero(@QueryParam("provincia") String provincia, @QueryParam("genero") String genero) {
         System.out.println("BUSCAR POR PROVINCIA Y GENERO XXXX");
         return this.estudianteService.buscarPorProvinciaGenero(provincia, genero);
