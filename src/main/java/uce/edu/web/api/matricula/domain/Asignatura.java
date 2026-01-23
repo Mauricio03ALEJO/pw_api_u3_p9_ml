@@ -7,8 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.persistence.Column;
 
+@XmlRootElement
 @Entity
 @Table(name = "Asignatura")
 @SequenceGenerator(name = "asignatura_seq", sequenceName = "asignatura_secuencia", allocationSize = 1)

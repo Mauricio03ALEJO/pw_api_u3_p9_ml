@@ -11,6 +11,8 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.matricula.application.AsignaturaService;
 import uce.edu.web.api.matricula.domain.Asignatura;
 
@@ -22,12 +24,14 @@ public class AsignaturaResource {
 
     @GET
     @Path("")
+    @jakarta.ws.rs.Produces(MediaType.APPLICATION_JSON)
     public List<Asignatura> listarTodas() {
         return this.asignaturaService.listarTodas();
     }
 
     @GET
     @Path("/{id}")
+    @jakarta.ws.rs.Produces(MediaType.APPLICATION_XML)
     public Asignatura consultarPorId(@PathParam("id") Integer id) {
         return this.asignaturaService.consultarPorId(id);
     }
@@ -52,14 +56,16 @@ public class AsignaturaResource {
 
     @POST
     @Path("")
-    public void guardar(Asignatura asignatura) {
+    public Response guardar(Asignatura asignatura) {
         this.asignaturaService.crear(asignatura);
+        return Response.status(Response.Status.CREATED).entity(asignatura).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void actualizar(@PathParam("id") Integer id, Asignatura asignatura) {
+    public Response actualizar(@PathParam("id") Integer id, Asignatura asignatura) {
         this.asignaturaService.actualizar(id, asignatura);
+        return Response.status(209).entity(null).build();
     }
 
     @PATCH
