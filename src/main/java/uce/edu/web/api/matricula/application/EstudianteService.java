@@ -35,7 +35,7 @@ public class EstudianteService {
 
     @Transactional
     public void actualizar(Integer id, EstudianteRepresentation est){
-        Estudiante estu = this.mapperToEstudiante(this.consultarPorId(id));
+        Estudiante estu = this.estudianteRepository.findById(id.longValue());
         estu.apellido = est.apellido;
         estu.nombre = est.nombre;
         estu.fechaNacimiento = est.fechaNacimiento;
@@ -44,7 +44,7 @@ public class EstudianteService {
 
     @Transactional
     public void actualizarParcial(Integer id, EstudianteRepresentation est){
-        Estudiante estu = this.mapperToEstudiante(this.consultarPorId(id));
+        Estudiante estu = this.estudianteRepository.findById(id.longValue());
         if(est.apellido != null){
             estu.apellido = est.apellido;
         }
